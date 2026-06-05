@@ -1,3 +1,46 @@
 xjkk
 
 Кропотова Вера 
+
+
+namespace Задание_2
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string[] words = textBox1.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                if (words.Length < 2)
+                {
+                    MessageBox.Show("Ошибка ввода.");
+                    return;
+                }
+                string firstWord = words[0].ToLower();
+                bool r = false; 
+                for (int i = 1; i < words.Length; i++)
+                { 
+                    if (words[i].ToLower() == firstWord)
+                    {
+                        r = true; 
+                        break; 
+                    }
+                }
+                if (r)
+                    MessageBox.Show("Повторяется.");
+                else
+                    MessageBox.Show("Нет, не повторяется.");
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка ввода!");
+            }
+        }
+    }
+}
